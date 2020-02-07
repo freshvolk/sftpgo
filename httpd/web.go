@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/sftpd"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/sftpd"
+	"github.com/freshvolk/sftpgo/utils"
 )
 
 const (

@@ -7,9 +7,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/httpd"
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/httpd"
+	"github.com/freshvolk/sftpgo/logger"
 )
 
 func registerSigHup() {

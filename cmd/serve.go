@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/drakkan/sftpgo/service"
+	"github.com/freshvolk/sftpgo/service"
 	"github.com/spf13/cobra"
 )
 

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/logger"
 )
 
 // MySQLProvider auth provider for MySQL/MariaDB database

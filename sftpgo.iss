@@ -3,7 +3,7 @@
 
 #define MyAppName "SFTPGo"
 #define MyAppVersion "0.9.5-dev"
-#define MyAppURL "https://github.com/drakkan/sftpgo"
+#define MyAppURL "https://github.com/freshvolk/sftpgo"
 #define MyAppExeName "sftpgo.exe"
 #define MyAppDir "C:\Users\vbox\Desktop\sftpgo_setup"
 #define MyOutputDir "C:\Users\vbox\Desktop"

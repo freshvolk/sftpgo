@@ -17,11 +17,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/metrics"
-	"github.com/drakkan/sftpgo/utils"
-	"github.com/drakkan/sftpgo/vfs"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/vfs"
 	"golang.org/x/crypto/ssh"
 )
 

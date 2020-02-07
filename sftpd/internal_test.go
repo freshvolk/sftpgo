@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/utils"
-	"github.com/drakkan/sftpgo/vfs"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/vfs"
 	"github.com/eikenb/pipeat"
 	"github.com/pkg/sftp"
 )

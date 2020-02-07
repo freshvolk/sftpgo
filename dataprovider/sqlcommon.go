@@ -7,8 +7,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/utils"
 )
 
 func getUserByUsername(username string, dbHandle *sql.DB) (User, error) {

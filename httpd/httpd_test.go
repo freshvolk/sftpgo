@@ -27,12 +27,12 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/rs/zerolog"
 
-	"github.com/drakkan/sftpgo/config"
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/httpd"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/sftpd"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/config"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/httpd"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/sftpd"
+	"github.com/freshvolk/sftpgo/utils"
 )
 
 const (

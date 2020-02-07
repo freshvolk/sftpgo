@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"sync"
 
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/logger"
 )
 
 type certManager struct {

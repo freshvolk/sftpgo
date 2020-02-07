@@ -1,5 +1,6 @@
 # SFTPGo
-[![Build Status](https://travis-ci.org/drakkan/sftpgo.svg?branch=master)](https://travis-ci.org/drakkan/sftpgo) [![Code Coverage](https://codecov.io/gh/drakkan/sftpgo/branch/master/graph/badge.svg)](https://codecov.io/gh/drakkan/sftpgo/branch/master) [![Go Report Card](https://goreportcard.com/badge/github.com/drakkan/sftpgo)](https://goreportcard.com/report/github.com/drakkan/sftpgo) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
+
+[![Build Status](https://travis-ci.org/freshvolk/sftpgo.svg?branch=master)](https://travis-ci.org/freshvolk/sftpgo) [![Code Coverage](https://codecov.io/gh/freshvolk/sftpgo/branch/master/graph/badge.svg)](https://codecov.io/gh/freshvolk/sftpgo/branch/master) [![Go Report Card](https://goreportcard.com/badge/github.com/freshvolk/sftpgo)](https://goreportcard.com/report/github.com/freshvolk/sftpgo) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 
 Full featured and highly configurable SFTP server
 
@@ -15,7 +16,7 @@ Full featured and highly configurable SFTP server
 - Bandwidth throttling is supported, with distinct settings for upload and download.
 - Per user maximum concurrent sessions.
 - Per user and per directory permissions: list directories content, upload, overwrite, download, delete, rename, create directories, create symlinks, changing owner/group and mode, changing access and modification times can be enabled or disabled.
-- Per user files/folders ownership: you can map all the users to the system account that runs SFTPGo (all platforms are supported) or you can run SFTPGo as root user and map each user or group of users to a different system account (*NIX only).
+- Per user files/folders ownership: you can map all the users to the system account that runs SFTPGo (all platforms are supported) or you can run SFTPGo as root user and map each user or group of users to a different system account (\*NIX only).
 - Per user IP filters are supported: login can be restricted to specific ranges of IP addresses or to a specific IP address.
 - Configurable custom commands and/or HTTP notifications on file upload, download, delete, rename, on SSH commands and on user add, update and delete.
 - Automatically terminating idle connections.
@@ -34,7 +35,7 @@ Full featured and highly configurable SFTP server
 ## Platforms
 
 SFTPGo is developed and tested on Linux. After each commit the code is automatically built and tested on Linux and macOS using Travis CI.
-Regularly the test cases are manually executed and pass on Windows. Other UNIX variants such as *BSD should work too.
+Regularly the test cases are manually executed and pass on Windows. Other UNIX variants such as \*BSD should work too.
 
 ## Requirements
 
@@ -43,7 +44,7 @@ Regularly the test cases are manually executed and pass on Windows. Other UNIX v
 
 ## Installation
 
-Binary releases for Linux, macOS and Windows are available, please visit the [releases](https://github.com/drakkan/sftpgo/releases "releases") page.
+Binary releases for Linux, macOS and Windows are available, please visit the [releases](https://github.com/freshvolk/sftpgo/releases "releases") page.
 
 Sample Dockerfiles for [Debian](https://www.debian.org "Debian") and [Alpine](https://alpinelinux.org "Alpine") are available inside the source tree [docker](./docker "docker") directory.
 
@@ -54,10 +55,10 @@ Some Linux distro packages are available:
   - [sftpgo-bin](https://aur.archlinux.org/packages/sftpgo-bin/). This package follow stable releases downloading the prebuilt linux binary from GitHub. It does not require `git`, `gcc` and `go` to build.
   - [sftpgo-git](https://aur.archlinux.org/packages/sftpgo-git/). This package build and install the latest git master. It requires `git`, `gcc` and `go` to build.
 
-Alternately you can install the package to your [$GOPATH](https://github.com/golang/go/wiki/GOPATH "GOPATH") with the [go tool](https://golang.org/cmd/go/ "go command") from shell:
+Alternately you can install the package to your [\$GOPATH](https://github.com/golang/go/wiki/GOPATH "GOPATH") with the [go tool](https://golang.org/cmd/go/ "go command") from shell:
 
 ```
-$ go get -u github.com/drakkan/sftpgo
+$ go get -u github.com/freshvolk/sftpgo
 ```
 
 Make sure [Git](https://git-scm.com/downloads) is installed on your machine and in your system's `PATH`.
@@ -71,13 +72,13 @@ If you don't need SQLite, you can also get/build SFTPGo setting the environment 
 
 Version info, such as git commit and build date, can be embedded setting the following string variables at build time:
 
-- `github.com/drakkan/sftpgo/utils.commit`
-- `github.com/drakkan/sftpgo/utils.date`
+- `github.com/freshvolk/sftpgo/utils.commit`
+- `github.com/freshvolk/sftpgo/utils.date`
 
 For example you can build using the following command:
 
 ```
-go build -i -ldflags "-s -w -X github.com/drakkan/sftpgo/utils.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/utils.date=`date -u +%FT%TZ`" -o sftpgo
+go build -i -ldflags "-s -w -X github.com/freshvolk/sftpgo/utils.commit=`git describe --always --dirty` -X github.com/freshvolk/sftpgo/utils.date=`date -u +%FT%TZ`" -o sftpgo
 ```
 
 and you will get a version that includes git commit and build date like this one:
@@ -129,65 +130,65 @@ If you don't configure any private host keys, the daemon will use `id_rsa` in th
 The `sftpgo` configuration file contains the following sections:
 
 - **"sftpd"**, the configuration for the SFTP server
-    - `bind_port`, integer. The port used for serving SFTP requests. Default: 2022
-    - `bind_address`, string. Leave blank to listen on all available network interfaces. Default: ""
-    - `idle_timeout`, integer. Time in minutes after which an idle client will be disconnected. 0 menas disabled. Default: 15
-    - `max_auth_tries` integer. Maximum number of authentication attempts permitted per connection. If set to a negative number, the number of attempts are unlimited. If set to zero, the number of attempts are limited to 6.
-    - `umask`, string. Umask for the new files and directories. This setting has no effect on Windows. Default: "0022"
-    - `banner`, string. Identification string used by the server. Leave empty to use the default banner. Default "SFTPGo_<version>"
-    - `upload_mode` integer. 0 means standard, the files are uploaded directly to the requested path. 1 means atomic: files are uploaded to a temporary path and renamed to the requested path when the client ends the upload. Atomic mode avoids problems such as a web server that serves partial files when the files are being uploaded. In atomic mode if there is an upload error the temporary file is deleted and so the requested upload path will not contain a partial file. 2 means atomic with resume support: as atomic but if there is an upload error the temporary file is renamed to the requested path and not deleted, this way a client can reconnect and resume the upload.
-    - `actions`, struct. It contains the command to execute and/or the HTTP URL to notify and the trigger conditions. See the "Custom Actions" paragraph for more details
-        - `execute_on`, list of strings. Valid values are `download`, `upload`, `delete`, `rename`, `ssh_cmd`. Leave empty to disable actions.
-        - `command`, string. Absolute path to the command to execute. Leave empty to disable.
-        - `http_notification_url`, a valid URL. An HTTP GET request will be executed to this URL. Leave empty to disable.
-    - `keys`, struct array. It contains the daemon's private keys. If empty or missing the daemon will search or try to generate `id_rsa` in the configuration directory.
-        - `private_key`, path to the private key file. It can be a path relative to the config dir or an absolute one.
-    - `enable_scp`, boolean. Default disabled. Set to `true` to enable the experimental SCP support. This setting is deprecated and will be removed in future versions, please add `scp` to the `enabled_ssh_commands` list to enable it
-    - `kex_algorithms`, list of strings. Available KEX (Key Exchange) algorithms in preference order. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L46 "Supported kex algos")
-    - `ciphers`, list of strings. Allowed ciphers. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L28 "Supported ciphers")
-    - `macs`, list of strings. available MAC (message authentication code) algorithms in preference order. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L84 "Supported MACs")
-    - `login_banner_file`, path to the login banner file. The contents of the specified file, if any, are sent to the remote user before authentication is allowed. It can be a path relative to the config dir or an absolute one. Leave empty to send no login banner
-    - `setstat_mode`, integer. 0 means "normal mode": requests for changing permissions, owner/group and access/modification times are executed. 1 means "ignore mode": requests for changing permissions, owner/group and access/modification times are silently ignored.
-    - `enabled_ssh_commands`, list of enabled SSH commands. These SSH commands are enabled by default: `md5sum`, `sha1sum`, `cd`, `pwd`. `*` enables all supported commands. Some commands are implemented directly inside SFTPGo, while for other commands we use system commands that need to be installed and in your system's `PATH`. For system commands we have no direct control on file creation/deletion and so we cannot support remote filesystems, such as S3, and quota check is suboptimal: if quota is enabled, the number of files is checked at the command begin and not while new files are created. The allowed size is calculated as the difference between the max quota and the used one and it is checked against the bytes transferred via SSH. The command is aborted if it uploads more bytes than the remaining allowed size calculated at the command start. Anyway we see the bytes that the remote command send to the local command via SSH, these bytes contain both protocol commands and files and so the size of the files is different from the size trasferred via SSH: for example a command can send compressed files or a protocol command (few bytes) could delete a big file. To mitigate this issue quotas are recalculated at the command end with a full home directory scan, this could be heavy for big directories. If you need system commands and quotas you could consider to disable quota restrictions and periodically update quota usage yourself using the REST API. We support the following SSH commands:
-      - `scp`, SCP is an experimental feature, we have our own SCP implementation since we can't rely on "scp" system command to proper handle quotas and user's home dir restrictions. The SCP protocol is quite simple but there is no official docs about it, so we need more testing and feedbacks before enabling it by default. We may not handle some borderline cases or have sneaky bugs. Please do accurate tests yourself before enabling SCP and let us known if something does not work as expected for your use cases. SCP between two remote hosts is supported using the `-3` scp option.
-      - `md5sum`, `sha1sum`, `sha256sum`, `sha384sum`, `sha512sum`. Useful to check message digests for uploaded files. These commands are implemented inside SFTPGo so they work even if the matching system commands are not available, for example on Windows.
-      - `cd`, `pwd`. Some SFTP clients does not support the SFTP SSH_FXP_REALPATH packet type and so they use `cd` and `pwd` SSH commands to get the initial directory. Currently `cd` do nothing and `pwd` always returns the `/` path.
-      - `git-receive-pack`, `git-upload-pack`, `git-upload-archive`. These commands enable support for Git repositories over SSH, they need to be installed and in your system's `PATH`.
-      - `rsync`. The `rsync` command need to be installed and in your system's `PATH`. We cannot avoid that rsync create symlinks so if the user has the permission to create symlinks we add the option `--safe-links` to the received rsync command if it is not already set. This should prevent to create symlinks that point outside the home dir. If the user cannot create symlinks we add the option `--munge-links`, if it is not already set. This should make symlinks unusable (but manually recoverable)
-    - `keyboard_interactive_auth_program`, string. Absolute path to an external program to use for keyboard interactive authentication. See the "Keyboard Interactive Authentication" paragraph for more details.
+  - `bind_port`, integer. The port used for serving SFTP requests. Default: 2022
+  - `bind_address`, string. Leave blank to listen on all available network interfaces. Default: ""
+  - `idle_timeout`, integer. Time in minutes after which an idle client will be disconnected. 0 menas disabled. Default: 15
+  - `max_auth_tries` integer. Maximum number of authentication attempts permitted per connection. If set to a negative number, the number of attempts are unlimited. If set to zero, the number of attempts are limited to 6.
+  - `umask`, string. Umask for the new files and directories. This setting has no effect on Windows. Default: "0022"
+  - `banner`, string. Identification string used by the server. Leave empty to use the default banner. Default "SFTPGo\_<version>"
+  - `upload_mode` integer. 0 means standard, the files are uploaded directly to the requested path. 1 means atomic: files are uploaded to a temporary path and renamed to the requested path when the client ends the upload. Atomic mode avoids problems such as a web server that serves partial files when the files are being uploaded. In atomic mode if there is an upload error the temporary file is deleted and so the requested upload path will not contain a partial file. 2 means atomic with resume support: as atomic but if there is an upload error the temporary file is renamed to the requested path and not deleted, this way a client can reconnect and resume the upload.
+  - `actions`, struct. It contains the command to execute and/or the HTTP URL to notify and the trigger conditions. See the "Custom Actions" paragraph for more details
+    - `execute_on`, list of strings. Valid values are `download`, `upload`, `delete`, `rename`, `ssh_cmd`. Leave empty to disable actions.
+    - `command`, string. Absolute path to the command to execute. Leave empty to disable.
+    - `http_notification_url`, a valid URL. An HTTP GET request will be executed to this URL. Leave empty to disable.
+  - `keys`, struct array. It contains the daemon's private keys. If empty or missing the daemon will search or try to generate `id_rsa` in the configuration directory.
+    - `private_key`, path to the private key file. It can be a path relative to the config dir or an absolute one.
+  - `enable_scp`, boolean. Default disabled. Set to `true` to enable the experimental SCP support. This setting is deprecated and will be removed in future versions, please add `scp` to the `enabled_ssh_commands` list to enable it
+  - `kex_algorithms`, list of strings. Available KEX (Key Exchange) algorithms in preference order. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L46 "Supported kex algos")
+  - `ciphers`, list of strings. Allowed ciphers. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L28 "Supported ciphers")
+  - `macs`, list of strings. available MAC (message authentication code) algorithms in preference order. Leave empty to use default values. The supported values can be found here: [`crypto/ssh`](https://github.com/golang/crypto/blob/master/ssh/common.go#L84 "Supported MACs")
+  - `login_banner_file`, path to the login banner file. The contents of the specified file, if any, are sent to the remote user before authentication is allowed. It can be a path relative to the config dir or an absolute one. Leave empty to send no login banner
+  - `setstat_mode`, integer. 0 means "normal mode": requests for changing permissions, owner/group and access/modification times are executed. 1 means "ignore mode": requests for changing permissions, owner/group and access/modification times are silently ignored.
+  - `enabled_ssh_commands`, list of enabled SSH commands. These SSH commands are enabled by default: `md5sum`, `sha1sum`, `cd`, `pwd`. `*` enables all supported commands. Some commands are implemented directly inside SFTPGo, while for other commands we use system commands that need to be installed and in your system's `PATH`. For system commands we have no direct control on file creation/deletion and so we cannot support remote filesystems, such as S3, and quota check is suboptimal: if quota is enabled, the number of files is checked at the command begin and not while new files are created. The allowed size is calculated as the difference between the max quota and the used one and it is checked against the bytes transferred via SSH. The command is aborted if it uploads more bytes than the remaining allowed size calculated at the command start. Anyway we see the bytes that the remote command send to the local command via SSH, these bytes contain both protocol commands and files and so the size of the files is different from the size trasferred via SSH: for example a command can send compressed files or a protocol command (few bytes) could delete a big file. To mitigate this issue quotas are recalculated at the command end with a full home directory scan, this could be heavy for big directories. If you need system commands and quotas you could consider to disable quota restrictions and periodically update quota usage yourself using the REST API. We support the following SSH commands:
+    - `scp`, SCP is an experimental feature, we have our own SCP implementation since we can't rely on "scp" system command to proper handle quotas and user's home dir restrictions. The SCP protocol is quite simple but there is no official docs about it, so we need more testing and feedbacks before enabling it by default. We may not handle some borderline cases or have sneaky bugs. Please do accurate tests yourself before enabling SCP and let us known if something does not work as expected for your use cases. SCP between two remote hosts is supported using the `-3` scp option.
+    - `md5sum`, `sha1sum`, `sha256sum`, `sha384sum`, `sha512sum`. Useful to check message digests for uploaded files. These commands are implemented inside SFTPGo so they work even if the matching system commands are not available, for example on Windows.
+    - `cd`, `pwd`. Some SFTP clients does not support the SFTP SSH_FXP_REALPATH packet type and so they use `cd` and `pwd` SSH commands to get the initial directory. Currently `cd` do nothing and `pwd` always returns the `/` path.
+    - `git-receive-pack`, `git-upload-pack`, `git-upload-archive`. These commands enable support for Git repositories over SSH, they need to be installed and in your system's `PATH`.
+    - `rsync`. The `rsync` command need to be installed and in your system's `PATH`. We cannot avoid that rsync create symlinks so if the user has the permission to create symlinks we add the option `--safe-links` to the received rsync command if it is not already set. This should prevent to create symlinks that point outside the home dir. If the user cannot create symlinks we add the option `--munge-links`, if it is not already set. This should make symlinks unusable (but manually recoverable)
+  - `keyboard_interactive_auth_program`, string. Absolute path to an external program to use for keyboard interactive authentication. See the "Keyboard Interactive Authentication" paragraph for more details.
 - **"data_provider"**, the configuration for the data provider
-    - `driver`, string. Supported drivers are `sqlite`, `mysql`, `postgresql`, `bolt`, `memory`
-    - `name`, string. Database name. For driver `sqlite` this can be the database name relative to the config dir or the absolute path to the SQLite database. For driver `memory` this is the (optional) path relative to the config dir or the absolute path to the users dump to load.
-    - `host`, string. Database host. Leave empty for drivers `sqlite`, `bolt` and `memory`
-    - `port`, integer. Database port. Leave empty for drivers `sqlite`, `bolt` and `memory`
-    - `username`, string. Database user. Leave empty for drivers `sqlite`, `bolt` and `memory`
-    - `password`, string. Database password. Leave empty for drivers `sqlite`, `bolt` and `memory`
-    - `sslmode`, integer. Used for drivers `mysql` and `postgresql`. 0 disable SSL/TLS connections, 1 require ssl, 2 set ssl mode to `verify-ca` for driver `postgresql` and `skip-verify` for driver `mysql`, 3 set ssl mode to `verify-full` for driver `postgresql` and `preferred` for driver `mysql`
-    - `connectionstring`, string. Provide a custom database connection string. If not empty this connection string will be used instead of build one using the previous parameters. Leave empty for drivers `bolt` and `memory`
-    - `users_table`, string. Database table for SFTP users
-    - `manage_users`, integer. Set to 0 to disable users management, 1 to enable
-    - `track_quota`, integer. Set the preferred mode to track users quota between the following choices:
-        - 0, disable quota tracking. REST API to scan user dir and update quota will do nothing
-        - 1, quota is updated each time a user upload or delete a file even if the user has no quota restrictions
-        - 2, quota is updated each time a user upload or delete a file but only for users with quota restrictions. With this configuration the "quota scan" REST API can still be used to periodically update space usage for users without quota restrictions
-    - `pool_size`, integer. Sets the maximum number of open connections for `mysql` and `postgresql` driver. Default 0 (unlimited)
-    - `users_base_dir`, string. Users' default base directory. If no home dir is defined while adding a new user, and this value is a valid absolute path, then the user home dir will be automatically defined as the path obtained joining the base dir and the username
-    - `actions`, struct. It contains the command to execute and/or the HTTP URL to notify and the trigger conditions. See the "Custom Actions" paragraph for more details
-        - `execute_on`, list of strings. Valid values are `add`, `update`, `delete`. `update` action will not be fired for internal updates such as the last login or the user quota fields.
-        - `command`, string. Absolute path to the command to execute. Leave empty to disable.
-        - `http_notification_url`, a valid URL. Leave empty to disable.
-    - `external_auth_program`, string. Absolute path to an external program to use for users authentication. See the "External Authentication" paragraph for more details.
-    - `external_auth_scope`, integer. 0 means all supported authetication scopes (passwords, public keys and keyboard interactive). 1 means passwords only. 2 means public keys only. 4 means key keyboard interactive only. The flags can be combined, for example 6 means public keys and keyboard interactive
-    - `credentials_path`, string. It defines the directory for storing user provided credential files such as Google Cloud Storage credentials. This can be an absolute path or a path relative to the config dir
+  - `driver`, string. Supported drivers are `sqlite`, `mysql`, `postgresql`, `bolt`, `memory`
+  - `name`, string. Database name. For driver `sqlite` this can be the database name relative to the config dir or the absolute path to the SQLite database. For driver `memory` this is the (optional) path relative to the config dir or the absolute path to the users dump to load.
+  - `host`, string. Database host. Leave empty for drivers `sqlite`, `bolt` and `memory`
+  - `port`, integer. Database port. Leave empty for drivers `sqlite`, `bolt` and `memory`
+  - `username`, string. Database user. Leave empty for drivers `sqlite`, `bolt` and `memory`
+  - `password`, string. Database password. Leave empty for drivers `sqlite`, `bolt` and `memory`
+  - `sslmode`, integer. Used for drivers `mysql` and `postgresql`. 0 disable SSL/TLS connections, 1 require ssl, 2 set ssl mode to `verify-ca` for driver `postgresql` and `skip-verify` for driver `mysql`, 3 set ssl mode to `verify-full` for driver `postgresql` and `preferred` for driver `mysql`
+  - `connectionstring`, string. Provide a custom database connection string. If not empty this connection string will be used instead of build one using the previous parameters. Leave empty for drivers `bolt` and `memory`
+  - `users_table`, string. Database table for SFTP users
+  - `manage_users`, integer. Set to 0 to disable users management, 1 to enable
+  - `track_quota`, integer. Set the preferred mode to track users quota between the following choices:
+    - 0, disable quota tracking. REST API to scan user dir and update quota will do nothing
+    - 1, quota is updated each time a user upload or delete a file even if the user has no quota restrictions
+    - 2, quota is updated each time a user upload or delete a file but only for users with quota restrictions. With this configuration the "quota scan" REST API can still be used to periodically update space usage for users without quota restrictions
+  - `pool_size`, integer. Sets the maximum number of open connections for `mysql` and `postgresql` driver. Default 0 (unlimited)
+  - `users_base_dir`, string. Users' default base directory. If no home dir is defined while adding a new user, and this value is a valid absolute path, then the user home dir will be automatically defined as the path obtained joining the base dir and the username
+  - `actions`, struct. It contains the command to execute and/or the HTTP URL to notify and the trigger conditions. See the "Custom Actions" paragraph for more details
+    - `execute_on`, list of strings. Valid values are `add`, `update`, `delete`. `update` action will not be fired for internal updates such as the last login or the user quota fields.
+    - `command`, string. Absolute path to the command to execute. Leave empty to disable.
+    - `http_notification_url`, a valid URL. Leave empty to disable.
+  - `external_auth_program`, string. Absolute path to an external program to use for users authentication. See the "External Authentication" paragraph for more details.
+  - `external_auth_scope`, integer. 0 means all supported authetication scopes (passwords, public keys and keyboard interactive). 1 means passwords only. 2 means public keys only. 4 means key keyboard interactive only. The flags can be combined, for example 6 means public keys and keyboard interactive
+  - `credentials_path`, string. It defines the directory for storing user provided credential files such as Google Cloud Storage credentials. This can be an absolute path or a path relative to the config dir
 - **"httpd"**, the configuration for the HTTP server used to serve REST API
-    - `bind_port`, integer. The port used for serving HTTP requests. Set to 0 to disable HTTP server. Default: 8080
-    - `bind_address`, string. Leave blank to listen on all available network interfaces. Default: "127.0.0.1"
-    - `templates_path`, string. Path to the HTML web templates. This can be an absolute path or a path relative to the config dir
-    - `static_files_path`, string. Path to the static files for the web interface. This can be an absolute path or a path relative to the config dir
-    - `backups_path`, string. Path to the backup directory. This can be an absolute path or a path relative to the config dir. We don't allow backups in arbitrary paths for security reasons
-    - `auth_user_file`, string. Path to a file used to store usernames and password for basic authentication. This can be an absolute path or a path relative to the config dir. We support HTTP basic authentication and the file format must conform to the one generated using the Apache tool. The supported password formats are bcrypt (`$2y$` prefix) and md5 crypt (`$apr1$` prefix). If empty HTTP authentication is disabled.
-    - `certificate_file`, string. Certificate for HTTPS. This can be an absolute path or a path relative to the config dir.
-    - `certificate_key_file`, string. Private key matching the above certificate. This can be an absolute path or a path relative to the config dir. If both the certificate and the private key are provided the the server will expect HTTPS connections. Certificate and key files can be reloaded on demand sending a `SIGHUP` signal on Unix based systems and a `paramchange` request to the running service on Windows.
+  - `bind_port`, integer. The port used for serving HTTP requests. Set to 0 to disable HTTP server. Default: 8080
+  - `bind_address`, string. Leave blank to listen on all available network interfaces. Default: "127.0.0.1"
+  - `templates_path`, string. Path to the HTML web templates. This can be an absolute path or a path relative to the config dir
+  - `static_files_path`, string. Path to the static files for the web interface. This can be an absolute path or a path relative to the config dir
+  - `backups_path`, string. Path to the backup directory. This can be an absolute path or a path relative to the config dir. We don't allow backups in arbitrary paths for security reasons
+  - `auth_user_file`, string. Path to a file used to store usernames and password for basic authentication. This can be an absolute path or a path relative to the config dir. We support HTTP basic authentication and the file format must conform to the one generated using the Apache tool. The supported password formats are bcrypt (`$2y$` prefix) and md5 crypt (`$apr1$` prefix). If empty HTTP authentication is disabled.
+  - `certificate_file`, string. Certificate for HTTPS. This can be an absolute path or a path relative to the config dir.
+  - `certificate_key_file`, string. Private key matching the above certificate. This can be an absolute path or a path relative to the config dir. If both the certificate and the private key are provided the the server will expect HTTPS connections. Certificate and key files can be reloaded on demand sending a `SIGHUP` signal on Unix based systems and a `paramchange` request to the running service on Windows.
 
 Here is a full example showing the default config in JSON format:
 
@@ -607,18 +608,18 @@ For each account the following properties can be configured:
 - `quota_size` maximum size allowed as bytes. 0 means unlimited.
 - `quota_files` maximum number of files allowed. 0 means unlimited.
 - `permissions` the following per directory permissions are supported:
-    - `*` all permissions are granted
-    - `list` list items is allowed
-    - `download` download files is allowed
-    - `upload` upload files is allowed
-    - `overwrite` overwrite an existing file, while uploading, is allowed. `upload` permission is required to allow file overwrite
-    - `delete` delete files or directories is allowed
-    - `rename` rename files or directories is allowed
-    - `create_dirs` create directories is allowed
-    - `create_symlinks` create symbolic links is allowed
-    - `chmod` changing file or directory permissions is allowed. On Windows, only the 0200 bit (owner writable) of mode is used; it controls whether the file's read-only attribute is set or cleared. The other bits are currently unused. Use mode 0400 for a read-only file and 0600 for a readable+writable file.
-    - `chown` changing file or directory owner and group is allowed. Changing owner and group is not supported on Windows.
-    - `chtimes` changing file or directory access and modification time is allowed
+  - `*` all permissions are granted
+  - `list` list items is allowed
+  - `download` download files is allowed
+  - `upload` upload files is allowed
+  - `overwrite` overwrite an existing file, while uploading, is allowed. `upload` permission is required to allow file overwrite
+  - `delete` delete files or directories is allowed
+  - `rename` rename files or directories is allowed
+  - `create_dirs` create directories is allowed
+  - `create_symlinks` create symbolic links is allowed
+  - `chmod` changing file or directory permissions is allowed. On Windows, only the 0200 bit (owner writable) of mode is used; it controls whether the file's read-only attribute is set or cleared. The other bits are currently unused. Use mode 0400 for a read-only file and 0600 for a readable+writable file.
+  - `chown` changing file or directory owner and group is allowed. Changing owner and group is not supported on Windows.
+  - `chtimes` changing file or directory access and modification time is allowed
 - `upload_bandwidth` maximum upload bandwidth as KB/s, 0 means unlimited.
 - `download_bandwidth` maximum download bandwidth as KB/s, 0 means unlimited.
 - `allowed_ip`, List of IP/Mask allowed to login. Any IP address not contained in this list cannot login. IP/Mask must be in CIDR notation as defined in RFC 4632 and RFC 4291, for example "192.0.2.0/24" or "2001:db8::/32"
@@ -715,53 +716,53 @@ Inside the log file each line is a JSON struct, each struct has a `sender` field
 The logs can be divided into the following categories:
 
 - **"app logs"**, internal logs used to debug `sftpgo`:
-    - `sender` string. This is generally the package name that emits the log
-    - `time` string. Date/time with millisecond precision
-    - `level` string
-    - `message` string
+  - `sender` string. This is generally the package name that emits the log
+  - `time` string. Date/time with millisecond precision
+  - `level` string
+  - `message` string
 - **"transfer logs"**, SFTP/SCP transfer logs:
-    - `sender` string. `Upload` or `Download`
-    - `time` string. Date/time with millisecond precision
-    - `level` string
-    - `elapsed_ms`, int64. Elapsed time, as milliseconds, for the upload/download
-    - `size_bytes`, int64. Size, as bytes, of the download/upload
-    - `username`, string
-    - `file_path` string
-    - `connection_id` string. Unique connection identifier
-    - `protocol` string. `SFTP` or `SCP`
+  - `sender` string. `Upload` or `Download`
+  - `time` string. Date/time with millisecond precision
+  - `level` string
+  - `elapsed_ms`, int64. Elapsed time, as milliseconds, for the upload/download
+  - `size_bytes`, int64. Size, as bytes, of the download/upload
+  - `username`, string
+  - `file_path` string
+  - `connection_id` string. Unique connection identifier
+  - `protocol` string. `SFTP` or `SCP`
 - **"command logs"**, SFTP/SCP command logs:
-    - `sender` string. `Rename`, `Rmdir`, `Mkdir`, `Symlink`, `Remove`, `Chmod`, `Chown`, `Chtimes`, `SSHCommand`
-    - `level` string
-    - `username`, string
-    - `file_path` string
-    - `target_path` string
-    - `filemode` string. Valid for sender `Chmod` otherwise empty
-    - `uid` integer. Valid for sender `Chown` otherwise -1
-    - `gid` integer. Valid for sender `Chown` otherwise -1
-    - `access_time` datetime as YYYY-MM-DDTHH:MM:SS. Valid for sender `Chtimes` otherwise empty
-    - `modification_time` datetime as YYYY-MM-DDTHH:MM:SS. Valid for sender `Chtimes` otherwise empty
-    - `ssh_command`, string. Valid for sender `SSHCommand` otherwise empty
-    - `connection_id` string. Unique connection identifier
-    - `protocol` string. `SFTP`, `SCP` or `SSH`
+  - `sender` string. `Rename`, `Rmdir`, `Mkdir`, `Symlink`, `Remove`, `Chmod`, `Chown`, `Chtimes`, `SSHCommand`
+  - `level` string
+  - `username`, string
+  - `file_path` string
+  - `target_path` string
+  - `filemode` string. Valid for sender `Chmod` otherwise empty
+  - `uid` integer. Valid for sender `Chown` otherwise -1
+  - `gid` integer. Valid for sender `Chown` otherwise -1
+  - `access_time` datetime as YYYY-MM-DDTHH:MM:SS. Valid for sender `Chtimes` otherwise empty
+  - `modification_time` datetime as YYYY-MM-DDTHH:MM:SS. Valid for sender `Chtimes` otherwise empty
+  - `ssh_command`, string. Valid for sender `SSHCommand` otherwise empty
+  - `connection_id` string. Unique connection identifier
+  - `protocol` string. `SFTP`, `SCP` or `SSH`
 - **"http logs"**, REST API logs:
-    - `sender` string. `httpd`
-    - `level` string
-    - `remote_addr` string. IP and port of the remote client
-    - `proto` string, for example `HTTP/1.1`
-    - `method` string. HTTP method (`GET`, `POST`, `PUT`, `DELETE` etc.)
-    - `user_agent` string
-    - `uri` string. Full uri
-    - `resp_status` integer. HTTP response status code
-    - `resp_size` integer. Size in bytes of the HTTP response
-    - `elapsed_ms` int64. Elapsed time, as milliseconds, to complete the request
-    - `request_id` string. Unique request identifier
+  - `sender` string. `httpd`
+  - `level` string
+  - `remote_addr` string. IP and port of the remote client
+  - `proto` string, for example `HTTP/1.1`
+  - `method` string. HTTP method (`GET`, `POST`, `PUT`, `DELETE` etc.)
+  - `user_agent` string
+  - `uri` string. Full uri
+  - `resp_status` integer. HTTP response status code
+  - `resp_size` integer. Size in bytes of the HTTP response
+  - `elapsed_ms` int64. Elapsed time, as milliseconds, to complete the request
+  - `request_id` string. Unique request identifier
 - **"connection failed logs"**, logs for failed attempts to initialize a connection. A connection can fail for an authentication error or other errors such as a client abort or a timeout if the login does not happen in two minutes
-    - `sender` string. `connection_failed`
-    - `level` string
-    - `username`, string. Can be empty if the connection is closed before an authentication attempt
-    - `client_ip` string.
-    - `login_type` string. Can be `public_key`, `password` or `no_auth_tryed`
-    - `error` string. Optional error description
+  - `sender` string. `connection_failed`
+  - `level` string
+  - `username`, string. Can be empty if the connection is closed before an authentication attempt
+  - `client_ip` string.
+  - `login_type` string. Can be `public_key`, `password` or `no_auth_tryed`
+  - `error` string. Optional error description
 
 ### Brute force protection
 

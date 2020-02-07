@@ -2,7 +2,7 @@
 // REST API allows to manage users and quota and to get real time reports for the active connections
 // with possibility of forcibly closing a connection.
 // The OpenAPI 3 schema for the exposed API can be found inside the source tree:
-// https://github.com/drakkan/sftpgo/tree/master/api/schema/openapi.yaml
+// https://github.com/freshvolk/sftpgo/tree/master/api/schema/openapi.yaml
 // A basic Web interface to manage users and connections is provided too
 package httpd
 
@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/logger"
 	"github.com/go-chi/chi"
 )
 

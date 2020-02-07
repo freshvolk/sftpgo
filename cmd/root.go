@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/drakkan/sftpgo/config"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/config"
+	"github.com/freshvolk/sftpgo/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

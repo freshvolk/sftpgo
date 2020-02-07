@@ -5,7 +5,7 @@ package utils
 import (
 	"syscall"
 
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/logger"
 )
 
 // SetUmask sets umask on unix systems

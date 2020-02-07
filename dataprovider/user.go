@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/utils"
-	"github.com/drakkan/sftpgo/vfs"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/vfs"
 )
 
 // Available permissions for SFTP users

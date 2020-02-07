@@ -1,6 +1,6 @@
 package utils
 
-import "github.com/drakkan/sftpgo/logger"
+import "github.com/freshvolk/sftpgo/logger"
 
 // SetUmask does nothing on windows
 func SetUmask(umask int, configValue string) {

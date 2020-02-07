@@ -15,9 +15,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/metrics"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/utils"
 	"github.com/eikenb/pipeat"
 )
 

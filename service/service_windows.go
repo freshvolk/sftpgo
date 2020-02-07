@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/httpd"
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/httpd"
+	"github.com/freshvolk/sftpgo/logger"
 
 	"golang.org/x/sys/windows/svc"
 	"golang.org/x/sys/windows/svc/eventlog"

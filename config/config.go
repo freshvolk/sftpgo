@@ -2,18 +2,18 @@
 // Configuration is loaded from sftpgo.conf file.
 // If sftpgo.conf is not found or cannot be readed or decoded as json the default configuration is used.
 // The default configuration an be found inside the source tree:
-// https://github.com/drakkan/sftpgo/blob/master/sftpgo.conf
+// https://github.com/freshvolk/sftpgo/blob/master/sftpgo.conf
 package config
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/httpd"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/sftpd"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/httpd"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/sftpd"
+	"github.com/freshvolk/sftpgo/utils"
 	"github.com/spf13/viper"
 )
 

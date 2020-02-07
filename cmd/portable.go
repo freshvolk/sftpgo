@@ -7,10 +7,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/service"
-	"github.com/drakkan/sftpgo/sftpd"
-	"github.com/drakkan/sftpgo/vfs"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/service"
+	"github.com/freshvolk/sftpgo/sftpd"
+	"github.com/freshvolk/sftpgo/vfs"
 	"github.com/spf13/cobra"
 )
 

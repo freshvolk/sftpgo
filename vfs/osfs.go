@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/drakkan/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/logger"
 	"github.com/eikenb/pipeat"
 	"github.com/rs/xid"
 )

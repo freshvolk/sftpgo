@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/drakkan/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/metrics"
 	"github.com/go-chi/chi/middleware"
 	"github.com/rs/zerolog"
 )

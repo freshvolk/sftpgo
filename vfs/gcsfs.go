@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"cloud.google.com/go/storage"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/metrics"
 	"github.com/eikenb/pipeat"
 	"google.golang.org/api/googleapi"
 	"google.golang.org/api/iterator"

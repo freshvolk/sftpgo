@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/drakkan/sftpgo/dataprovider"
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/dataprovider"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/metrics"
 	"github.com/eikenb/pipeat"
 )
 

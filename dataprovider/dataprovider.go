@@ -35,10 +35,10 @@ import (
 	"golang.org/x/crypto/pbkdf2"
 	"golang.org/x/crypto/ssh"
 
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/metrics"
-	"github.com/drakkan/sftpgo/utils"
-	"github.com/drakkan/sftpgo/vfs"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/metrics"
+	"github.com/freshvolk/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/vfs"
 	unixcrypt "github.com/nathanaelle/password"
 )
 

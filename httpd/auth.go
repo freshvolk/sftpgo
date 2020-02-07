@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/drakkan/sftpgo/logger"
-	"github.com/drakkan/sftpgo/utils"
+	"github.com/freshvolk/sftpgo/logger"
+	"github.com/freshvolk/sftpgo/utils"
 	unixcrypt "github.com/nathanaelle/password"
 	"golang.org/x/crypto/bcrypt"
 )
