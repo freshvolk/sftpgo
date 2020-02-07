@@ -64,6 +64,13 @@ func InitLogger(logFilePath string, logMaxSize int, logMaxBackups int, logMaxAge
 	logger.Level(level)
 }
 
+// InitCustomLogger configures the logger using a passed in zerolog logger
+func InitCustomLogger(customLogger zerolog.Logger) {
+	zerolog.TimeFieldFormat = dateFormat
+	logger = customLogger
+	consoleLogger = zerolog.Nop()
+}
+
 // DisableLogger disable the main logger.
 // ConsoleLogger will not be affected
 func DisableLogger() {
